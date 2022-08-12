@@ -8,26 +8,26 @@ const addJobToQueue = async (filepath, language) => {
   let output;
   let startedAt;
   if (language === "py") {
-    startedAt = new Date();
+    startedAt = Date.now();
     output = await python.runFile(filepath, (err, result) => {
       if (err) return err; else return result;
 
     });
   } else
     if (language === "java") {
-      startedAt = new Date();
+      startedAt = Date.now();
       output = await java.runFile(filepath, (err, result) => {
         if (err) return err; else return result;
       });
     } else
       if (language === "cpp") {
-        startedAt = new Date();
+        startedAt = Date.now();
         output = await cpp.runFile(filepath, (err, result) => {
           if (err) return err; else return result;
         });
       }
 
-  return { startedAt: startedAt, completedAt: new Date(), output: output, status: "success" }
+  return { startedAt: startedAt, completedAt: Date.now(), output: output, status: "success" }
 
 };
 
