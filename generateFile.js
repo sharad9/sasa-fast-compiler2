@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-
+const {generateCode} = require("./generateCode");
 
 const dirCodes = path.join(__dirname, "codes");
 
@@ -9,10 +9,10 @@ if (!fs.existsSync(dirCodes)) {
 }
 
 const generateFile = async (format, content, userName) => {
-  const jobId = userName;
-  const filename = `${jobId}.${format}`;
+
+  const filename = `Execute.${format}`;
   const filepath = path.join(dirCodes, filename);
-  await fs.writeFileSync(filepath, content);
+  await fs.writeFileSync(filepath, generateCode(format,content,userName));
   return filepath;
 };
 
