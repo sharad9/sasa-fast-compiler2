@@ -38,20 +38,11 @@ public class Execute {
 	}
 }
 `,
-		cpp: `import java.util.concurrent.TimeUnit;\n` + code +
-			`
-public class Execute {
-	public static void main(String args[]) {
-		long startTime = System.nanoTime();
+		cpp:  code
 
-		${userName}.main(args);
+			
 
-		long stopTime = System.nanoTime();
-		long elapsedTime = (stopTime - startTime);
-		System.out.println("Total Time :"+(TimeUnit.MILLISECONDS.convert(elapsedTime, TimeUnit.NANOSECONDS) / 1000.0)+"s");
-	}
 }
-`}
 	return codes[language];
 }
 module.exports = {
